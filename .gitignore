@@ -1,0 +1,29 @@
+# Node.js dependencies
+node_modules/
+
+# Package lock
+package-lock.json
+npm-debug.log
+
+# Environment variables
+.env
+src/config/env.js   # If you store secrets here
+
+# Build output
+dist/
+build/
+
+# TypeScript/JS artifacts (if using TypeScript)
+*.tsbuildinfo
+*.js.map
+*.d.ts
+
+# Logs
+logs/
+*.log
+yarn-error.log
+
+# OS and IDE files
+.DS_Store
+.vscode/
+.idea/
