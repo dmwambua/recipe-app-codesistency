@@ -1,0 +1,8 @@
+// backend/src/drizzle.config.js
+import { ENV } from "./config/env.js";
+export default {
+    schema: "./src/db/schema.js",//specifies the schema file
+    out: "./src/db/migrations", //specifies the output directory
+    dialect: "postgres",
+    dbCredentials: { url: ENV.DATABASE_URL },//specifies the database credentials
+};
