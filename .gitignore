@@ -7,7 +7,6 @@ npm-debug.log
 
 # Environment variables
 .env
-src/config/env.js   # If you store secrets here
 
 # Build output
 dist/
