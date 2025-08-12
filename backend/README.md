@@ -1,11 +1,25 @@
-https://www.youtube.com/watch?v=fLIl6jypzkI&t=716s
-Minute 27.50
+Basics
 npm run dev to RUN
 tree - To see the directory tree. This is a function of Homebrew use brew install tree
+http://localhost:3000/ PORT
+
+Web Resources
+https://www.youtube.com/watch?v=fLIl6jypzkI&t=716s
+Minute 27.50
 https://neon.com/ - Postgres serverless database is provided by neon
 https://app.eraser.io/dashboard/all- For database relationship diagram, use eraser.com
 Drizzle-orm - (Object Relational Mapping) used to communicate with database (CRUD - create, read, update, delete)
 npx drizzle-kit generate to generate schema migrations (versioned change to the database)
+https://www.postman.com/ postman for testing API
+https://dashboard.clerk.com/apps Clerk for authentication
+
+
+Other resourses/ Kenyan options
+https://truehost.co.ke/cloud/store/vps-hosting self managed servers, includes MPESA payments
+https://novahost.co.ke/ Novahost
+https://supabase.com/pricing alternative for managed service
+https://www.hostpinnacle.co.ke/ HostPinnacle
+
 
 Sequence of events
 Mobile app uses react native and expo, postgresql with drizzle as the ORM (Object Relational Mapping alternate would be prisma)
@@ -32,7 +46,12 @@ create drizzle.config.js file under backend
 run npx drizzle-kit generate to generate migrations
 run npx drizzle-kit migrate
 now you should see the tables if you log into neon
-
+create APIs within server.js using what is on the schema
+test the API using postman
+sign up for clerk for authentication
+in clerk, use the expo SDK, copy the .env code and add it to .env
+create a post api
+on postman, create a delete function and send, this should delete the matched record on neon database
 
 
 
