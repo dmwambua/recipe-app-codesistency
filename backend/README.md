@@ -1,7 +1,43 @@
 https://www.youtube.com/watch?v=fLIl6jypzkI&t=716s
-Minute 15:18
+Minute 27.50
 npm run dev to RUN
 tree - To see the directory tree. This is a function of Homebrew use brew install tree
-neon.com - Postgress serverless database is provided by https://neon.com/
-eraser.com - For database relationship diagram, use eraser.com
+https://neon.com/ - Postgres serverless database is provided by neon
+https://app.eraser.io/dashboard/all- For database relationship diagram, use eraser.com
 Drizzle-orm - (Object Relational Mapping) used to communicate with database (CRUD - create, read, update, delete)
+npx drizzle-kit generate to generate schema migrations (versioned change to the database)
+
+Sequence of events
+Mobile app uses react native and expo, postgresql with drizzle as the ORM (Object Relational Mapping alternate would be prisma)
+can use eraser to organize thoughts and database diagrams
+create backend and mobile directories
+cd into backend
+npm install -y //for json file
+npm install express@5.1.0 @neondatabase/serverless@1.0.0 cors@2.8.5 dotenv@16.5.0 drizzle-orm@0.44.2 cron@4.3.0 //for express, package-lock json, node modules and others
+npm i nodemon -D //install as a dependency
+create server.js under backend (minute 6.4) and edit package.json  for "dev": "nodemon server.js" and "start": "node server.js"
+npm run dev to test
+create src under backend
+create .env file under src
+create config directory under src
+create env.js under src
+write the code for server.js and test the API
+npm i -D drizzle-kit
+for serverless, create an account with neon then create a project
+follow instructions to connect to database ad the database url in the .env
+create db folder under src
+create schema.js under db and add the table in the schema
+create db.js under config
+create drizzle.config.js file under backend
+run npx drizzle-kit generate to generate migrations
+run npx drizzle-kit migrate
+now you should see the tables if you log into neon
+
+
+
+
+
+
+
+
+
