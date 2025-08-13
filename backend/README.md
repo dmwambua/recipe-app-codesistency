@@ -12,6 +12,7 @@ Drizzle-orm - (Object Relational Mapping) used to communicate with database (CRU
 npx drizzle-kit generate to generate schema migrations (versioned change to the database)
 https://www.postman.com/ postman for testing API
 https://dashboard.clerk.com/apps Clerk for authentication
+https://render.com/ render.com instead of renting and managing a Virtual Private Server (VPS) render manages VPS, Postgres and offers automatic deployments, SSL, Security patches and maintenance i.e. it is a Platform as a Service (PaaS).
 
 
 Other resourses/ Kenyan options
@@ -52,7 +53,8 @@ sign up for clerk for authentication
 in clerk, use the expo SDK, copy the .env code and add it to .env
 create a post api
 on postman, create a delete function and send, this should delete the matched record on neon database
-
+write a GET endpoint and test it on postman
+deploy in render.com create a new web service
 
 
 
