@@ -64,8 +64,13 @@ Render free tier becomes inactive after 15 minutes, CRON jobs can be used to sen
 Create cron.js in config add the cronJob expression. ("*/14 * * * *", function () note that the / means "every"
 You need to add the API_URL shown on render as a new environment variable for this part of the code to work - be sure to specify the api to be called, e.g  .get(process.env.API_URL, (res) => {
 
+Take home message: We are using Express JS as our backend API language. It has a shorter learning curve, however, if an app will include many user roles, filtering, a larger dev team and payments, it is better to use NestJS in the backend for APIs.
 
-
+Front End
+npx create-expo-app@latest .
+the . at the end says install in current folder
+npm run reset-project to delete the extra stuff that you don't need
+npx expo to start
 
 
 
