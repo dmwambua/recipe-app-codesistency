@@ -5,7 +5,7 @@ http://localhost:3000/ PORT
 
 Web Resources
 https://www.youtube.com/watch?v=fLIl6jypzkI&t=716s
-Minute 27.50
+Minute 51
 https://neon.com/ - Postgres serverless database is provided by neon
 https://app.eraser.io/dashboard/all- For database relationship diagram, use eraser.com
 Drizzle-orm - (Object Relational Mapping) used to communicate with database (CRUD - create, read, update, delete)
@@ -54,7 +54,7 @@ in clerk, use the expo SDK, copy the .env code and add it to .env
 create a post api
 on postman, create a delete function and send, this should delete the matched record on neon database
 write a GET endpoint and test it on postman
-deploy in render.com create a new web service
+deploy in render.com create a new web service, render will ask where you want to get the repo from and you can choose GitHub, Install. Check the Build command (can use npm install) and the Start command (can use npm run start) depending on what is in the package.json. if build fails, make sure that package.json is in the root directory, and direct render (in settings) to where the root directory is, e.g backend. Retry the build. in this case, had to change start command to node src/server.js
 
 
 
