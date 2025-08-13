@@ -4,8 +4,11 @@ import { ENV } from './config/env.js';
 import {db} from './config/db.js';
 import { favoritesTable } from './db/schema.js'; //tutor did not have this
 import {and, eq} from 'drizzle-orm';
+import job from './config/cron.js'; // Import the cron job
+
 const app = express();
 const PORT = ENV.PORT || 3000;
+if (ENV.NODE_ENV === "development") job.start(); // Start the cron job in development mode
 app.use(express.json());
 app.get("/api/health", (req, res) => {
   res.status(200).json({ success: true, message: "API is healthy" });

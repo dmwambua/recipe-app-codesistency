@@ -1,11 +1,15 @@
+Tutorial
+Youtube: https://www.youtube.com/watch?v=fLIl6jypzkI&t=716s
+GitHub Repo: https://github.com/burakorkmez/react-native-recipe-app
+Progress: Minute 
+
 Basics
 npm run dev to RUN
 tree - To see the directory tree. This is a function of Homebrew use brew install tree
-http://localhost:3000/ PORT
+http://localhost:3000/favorites PORT
 
 Web Resources
-https://www.youtube.com/watch?v=fLIl6jypzkI&t=716s
-Minute 51
+
 https://neon.com/ - Postgres serverless database is provided by neon
 https://app.eraser.io/dashboard/all- For database relationship diagram, use eraser.com
 Drizzle-orm - (Object Relational Mapping) used to communicate with database (CRUD - create, read, update, delete)
@@ -15,7 +19,7 @@ https://dashboard.clerk.com/apps Clerk for authentication
 https://render.com/ render.com instead of renting and managing a Virtual Private Server (VPS) render manages VPS, Postgres and offers automatic deployments, SSL, Security patches and maintenance i.e. it is a Platform as a Service (PaaS).
 
 
-Other resourses/ Kenyan options
+Other resources/ Kenyan options
 https://truehost.co.ke/cloud/store/vps-hosting self managed servers, includes MPESA payments
 https://novahost.co.ke/ Novahost
 https://supabase.com/pricing alternative for managed service
@@ -54,7 +58,11 @@ in clerk, use the expo SDK, copy the .env code and add it to .env
 create a post api
 on postman, create a delete function and send, this should delete the matched record on neon database
 write a GET endpoint and test it on postman
-deploy in render.com create a new web service, render will ask where you want to get the repo from and you can choose GitHub, Install. Check the Build command (can use npm install) and the Start command (can use npm run start) depending on what is in the package.json. if build fails, make sure that package.json is in the root directory, and direct render (in settings) to where the root directory is, e.g backend. Retry the build. in this case, had to change start command to node src/server.js
+deploy in render.com create a new web service, render will ask where you want to get the repo from and you can choose GitHub, Install. Check the Build command (can use npm install) and the Start command (can use npm run start) depending on what is in the package.json. if build fails, make sure that package.json is in the root directory, and direct render (in settings) to where the root directory is, e.g backend. Retry the build. in this case, had to change start command to node src/server.js. Render will give a hotlink for the online version, you may see cannot GET/, You need to test with the data that is already on neon/database with user, e/g/ https://recipe-app-codesistency.onrender.com/api/favorites/1231 to get a result.
+
+Render free tier becomes inactive after 15 minutes, CRON jobs can be used to send a request every so often to keep the API active. cron is already in package.json since we installed it.
+Create cron.js in config add the cronJob expression. ("*/14 * * * *", function () note that the / means "every"
+You need to add the API_URL shown on render as a new environment variable for this part of the code to work - be sure to specify the api to be called, e.g  .get(process.env.API_URL, (res) => {
 
 
 
