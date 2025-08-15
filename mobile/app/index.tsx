@@ -1,17 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { Image } from "expo-image";
 import UzaNunuaLogo from "../assets/images/UZA-Nunua-Logo-2.png";
+import { Link } from "expo-router";
 export default function Index() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to the DW recipe app!</Text>
-      <Image
-        source={UzaNunuaLogo}
-        style={{
-          width: 100,
-          height: 100
-        }}
-      />
+
+      <TouchableOpacity>
+        <Text>Get Started</Text>
+      </TouchableOpacity>
+
+      <Link href="/about">Visit your favorites</Link>
+
     </View>
   );
 }

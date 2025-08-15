@@ -1,7 +1,11 @@
 Tutorial
 Youtube: https://www.youtube.com/watch?v=fLIl6jypzkI&t=716s
 GitHub Repo: https://github.com/burakorkmez/react-native-recipe-app
+Gists https://gist.github.com/burakorkmez/11bc1e5939bcc8d0a4b2f6bf1c2c6a3d
+free icons used in this tutorial https://www.thiings.co/things
+free icons elsewhere https://www.flaticon.com/free-icons/things 
 Progress: Minute 
+
 
 Basics
 npm run dev to RUN
@@ -24,6 +28,7 @@ https://truehost.co.ke/cloud/store/vps-hosting self managed servers, includes MP
 https://novahost.co.ke/ Novahost
 https://supabase.com/pricing alternative for managed service
 https://www.hostpinnacle.co.ke/ HostPinnacle
+https://www.raycast.com/ helps command your computer like opening apps and camera
 
 
 Sequence of events
@@ -71,7 +76,11 @@ npx create-expo-app@latest .
 the . at the end says install in current folder
 npm run reset-project to delete the extra stuff that you don't need
 npx expo to start
+remove inline styles and create a stylesheet and point the inline styles to the stylesheet (this can later be moved to its own file)
 
-
-
-
+created an /about page
+installed ES7+React so I can run rnfe to create a react component
+included SafeAreaView in layout
+Styling is with the help of the tutorial gists
+created styles folder in the assets folder and added in this folder the auth.styles.js file
+created constants under mobile folder and inside constants created the color.js file. Colors.js contains theme colors and this is where you can go to change the app theme
