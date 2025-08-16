@@ -4,6 +4,8 @@ GitHub Repo: https://github.com/burakorkmez/react-native-recipe-app
 Gists https://gist.github.com/burakorkmez/11bc1e5939bcc8d0a4b2f6bf1c2c6a3d
 free icons used in this tutorial https://www.thiings.co/things
 free icons elsewhere https://www.flaticon.com/free-icons/things 
+Udemy course https://www.udemy.com/course/the-web-dev-bootcamp/?couponCode=DA64BA3F36F6D786D143
+The Meal DB https://www.themealdb.com/api.php 
 Progress: Minute 
 
 
@@ -84,3 +86,10 @@ included SafeAreaView in layout
 Styling is with the help of the tutorial gists
 created styles folder in the assets folder and added in this folder the auth.styles.js file
 created constants under mobile folder and inside constants created the color.js file. Colors.js contains theme colors and this is where you can go to change the app theme
+
+Build out the Auth
+Go to Clerk and create a project, in the project, configure>Native Applications
+go to Expo, install Clerk. copy API Key and put it in a .env in the mobile folder. FYI: we already had this key in the backend so we just moved it
+wrap _layout with Clerk and added <Slot/>, npm install expo-secure-store
+Under app, create (auth) for authentication files. Use bracketsdenoting route group - parenthesis lets you organize related screens (such as all auth screens: login, register, etc) without adding (auth) into your app's URL path.
+For example, /login can live inside app/(auth)/login.tsx—and remain just /login at runtime. If you didn’t use parentheses and made a folder called auth, your URL would be /auth/login.
