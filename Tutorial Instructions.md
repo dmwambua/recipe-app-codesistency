@@ -32,6 +32,8 @@ https://supabase.com/pricing alternative for managed service
 https://www.hostpinnacle.co.ke/ HostPinnacle
 https://www.raycast.com/ helps command your computer like opening apps and camera
 
+Tricks
+If autosuggest does not work well, you can reload vscode window by CMD+Shift and typing reload window
 
 Sequence of events
 Mobile app uses react native and expo, postgresql with drizzle as the ORM (Object Relational Mapping alternate would be prisma)
@@ -94,3 +96,6 @@ wrap _layout with Clerk and added <Slot/>, npm install expo-secure-store
 Under app, create (auth) for authentication files. Use bracketsdenoting route group - parenthesis lets you organize related screens (such as all auth screens: login, register, etc) without adding (auth) into your app's URL path.
 For example, /login can live inside app/(auth)/login.tsx—and remain just /login at runtime. If you didn’t use parentheses and made a folder called auth, your URL would be /auth/login.
 use rnfe to set up the (tabs) files like index.jsx. _layout.jsx. and the (auth) files including _layout.jsx. sign-in.jsx sign-up.jsx and verify-email.jsx. pay special attention to redirection in the _layout.jsx files
+complete the signup page which includes email and password text areas and button for Signin as well as a signUp link if users are not signed up already
+
+Move on to the sign up page setup

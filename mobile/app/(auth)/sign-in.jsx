@@ -109,7 +109,7 @@ const SignInScreen = () => {
                             onPress={() => router.push('/(auth)/sign-up')}
                         >
                             <Text style={authStyles.linkText}>
-                                Don&apos;t have an account? Sign Up <Text style={authStyles.link}>Sign Up</Text>
+                                Don&apos;t have an account? <Text style={authStyles.link}>Sign Up</Text>
                             </Text>
 
                         </TouchableOpacity>
