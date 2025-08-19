@@ -66,7 +66,7 @@ const SignUpScreen = () => {
             value={email}
             onChangeText={setEmail}
             keyboardType="email-address"
-            autoCapitalize="none "
+            autoCapitalize="none"
           />
         </View>
         {/* PASSWORD INPUT */}

@@ -36,7 +36,6 @@ const VerifyEmail = ({ email, onBack }) => {
     }
   };
   return (
-    <View>
       <View style={authStyles.container}>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -90,7 +89,6 @@ const VerifyEmail = ({ email, onBack }) => {
             </View>
           </ScrollView>
         </KeyboardAvoidingView>
-      </View>
       </View>
       );
 };
