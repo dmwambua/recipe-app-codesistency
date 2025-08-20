@@ -9,4 +9,4 @@ const FavoritesScreen = () => {
   )
 }
 
-export default FavoritesScreen
+export default FavoritesScreen;
