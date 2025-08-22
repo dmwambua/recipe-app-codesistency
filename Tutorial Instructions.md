@@ -6,7 +6,7 @@ free icons used in this tutorial https://www.thiings.co/things
 free icons elsewhere https://www.flaticon.com/free-icons/things 
 Udemy course https://www.udemy.com/course/the-web-dev-bootcamp/?couponCode=DA64BA3F36F6D786D143
 The Meal DB https://www.themealdb.com/api.php 
-Progress: Minute 
+Progress: Minute 2:36
 
 
 Basics
@@ -99,3 +99,6 @@ use rnfe to set up the (tabs) files like index.jsx. _layout.jsx. and the (auth) 
 complete the signup page which includes email and password text areas and button for Signin as well as a signUp link if users are not signed up already
 
 Move on to the sign up page setup
+At bottom of app where the tab icons appear there may be a color that doesnt match the rest of the app. To correct this, create a components folder and in it include a SafeScreen.jsx, essentially wrap the slot in layout using SafeScreen in order to dictate header and footer.
+
+Created the mealAPI endpoints under services
