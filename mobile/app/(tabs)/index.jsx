@@ -6,7 +6,7 @@ import { homeStyles } from "../../assets/styles/home.styles";
 import { Image } from "expo-image";
 import { COLORS } from "../../constants/colors";
 import { Ionicons } from '@expo/vector-icons';
-
+import CategoryFilter from "../../components/CategoryFilter";
 const HomeScreen = () => {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -15,10 +15,10 @@ const HomeScreen = () => {
   const [featuredRecipe, setFeaturedRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-
+  // Load initial data
   const loadData = async () => {
-    setLoading(true);
     try {
+      setLoading(true);
       const [apiCategories, randomMeals, featuredMeal] = await Promise.all([
         MealAPI.getCategories(),
         MealAPI.getRandomMeals(12),
@@ -29,46 +29,49 @@ const HomeScreen = () => {
         name: cat.strCategory,
         image: cat.strCategoryThumb,
         description: cat.strCategoryDescription,
-
       }));
       setCategories(transformedCategories);
       if (!selectedCategory) setSelectedCategory(transformedCategories[0].name);
       const transformedMeals = randomMeals
         .map((meal) => MealAPI.transformMealData(meal))
         .filter((meal) => meal !== null);
+      setRecipes(transformedMeals);
+      const transformedFeatured = MealAPI.transformMealData(featuredMeal);
       setFeaturedRecipe(transformedFeatured);
     } catch (error) {
-      console.error("Error loading data:", error);
+      console.log.error("Error loading data:", error);
     } finally {
       setLoading(false);
     }
   };
-
+  // Load category data when a category is selected
   const loadCategoryData = async (category) => {
     try {
       const meals = await MealAPI.filterByCategory(category);
-      const transformedMeals = meals.map((meal) => MealAPI.transformMealData(meal).filter((meal) => meal != null));
+      const transformedMeals = meals
+        .map((meal) => MealAPI.transformMealData(meal))
+        .filter((meal) => meal !== null);
       setRecipes(transformedMeals);
     } catch (error) {
       console.error("Error loading category data:", error);
       setRecipes([]);
     }
   };
-
+  // Handle category selection
   const handleCategorySelect = async (category) => {
     setSelectedCategory(category);
     await loadCategoryData(category);
   };
-
   useEffect(() => {
     loadData();
   }, []);
 
   return (
+    // Main container
     <View style={homeStyles.container}>
       <ScrollView
-        showVerticalScrollIndicator={false}
-        refreshcontrol={() => { }}
+        showsVerticalScrollIndicator={false}
+        refreshControl={() => { }}
         contentContainerStyle={homeStyles.scrollContent}
       >
         {/* Welcome Section icons */}
@@ -95,42 +98,38 @@ const HomeScreen = () => {
               }}
           />
         </View>
-
         {/* Featured Recipe Section */}
-        {featuredRecipe && <View style={homeStyles.featuredSection}>
-          {featuredRecipe && (
+        {featuredRecipe && (
+          <View style={homeStyles.featuredSection}>
             <TouchableOpacity
               style={homeStyles.featuredSection}
               activeOpacity={0.9}
-              onPress={() => {
-                router.push(`/recipe/${featuredRecipe.id}`);
-              }}>
-              <Image source={{ uri: featuredRecipe.image }} style={{ width: 100, height: 100 }}
-              >
-                <View style={homeStyles.featuredImageContainer}>
-                  <Image source={{ uri: featuredRecipe.image }} style={homeStyles.featuredImage}
-                    contentFit="cover"
-                    transition={500}
-                  />
-                  <View style={homeStyles.featuredOverlay}>
-                    <View style={homeStyles.featuredBadge}>
-                      <Text style={homeStyles.featuredBadgeText}><Featured></Featured></Text>
-                    </View>
-                    <View style={homeStyles.featuredContent}>
-                      <Text style={homeStyles.featuredImageTitle}> numberOfLines={2}{featuredRecipe.title}</Text>
-
-                    </View>
+              onPress={() => router.push(`/recipe/${featuredRecipe.id}`)}
+            >
+              <View style={homeStyles.featuredImageContainer}>
+                <Image
+                  source={{ uri: featuredRecipe.image }}
+                  style={homeStyles.featuredImage}
+                  contentFit="cover"
+                  transition={500}
+                />
+                <View style={homeStyles.featuredOverlay}>
+                  <View style={homeStyles.featuredBadge}>
+                    <Text style={homeStyles.featuredBadgeText}>Featured</Text>
+                  </View>
+                  <View style={homeStyles.featuredContent}>
+                    <Text style={homeStyles.featuredTitle} numberOfLines={2}>
+                      {featuredRecipe.title}
+                    </Text>
                     <View style={homeStyles.featuredMeta}>
                       <View style={homeStyles.metaItem}>
                         <Ionicons name="time-outline" size={16} color={COLORS.white} />
                         <Text style={homeStyles.metaText}>{featuredRecipe.cookTime}</Text>
                       </View>
-
                       <View style={homeStyles.metaItem}>
                         <Ionicons name="people-outline" size={16} color={COLORS.white} />
                         <Text style={homeStyles.metaText}>{featuredRecipe.servings}</Text>
                       </View>
-
                       {featuredRecipe.area && (
                         <View style={homeStyles.metaItem}>
                           <Ionicons name="location-outline" size={16} color={COLORS.white} />
@@ -142,11 +141,21 @@ const HomeScreen = () => {
                 </View>
               </View>
             </TouchableOpacity>
-          )}
-        </View>
+          </View>
+        )}
 
-      </ScrollView>
-    </View>
+        {/* Categories Section */}
+        {categories.length > 0 && (
+          <CategoryFilter
+            categories={categories}
+            selectedCategory={selectedCategory}
+            onSelectCategory={handleCategorySelect}
+          />
+        )}
+          
+
+      </ScrollView >
+    </View >
   );
 };
 export default HomeScreen;

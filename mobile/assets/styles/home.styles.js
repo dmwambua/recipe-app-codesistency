@@ -138,7 +138,7 @@ export const homeStyles = StyleSheet.create({
   },
   categoryFilterScrollContent: {
     paddingHorizontal: 16,
-    gap: 12,
+    gap: 12,// Space between category buttons
   },
   categoryButton: {
     flexDirection: "column",

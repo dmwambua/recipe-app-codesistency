@@ -6,7 +6,7 @@ free icons used in this tutorial https://www.thiings.co/things
 free icons elsewhere https://www.flaticon.com/free-icons/things 
 Udemy course https://www.udemy.com/course/the-web-dev-bootcamp/?couponCode=DA64BA3F36F6D786D143
 The Meal DB https://www.themealdb.com/api.php 
-Progress: Minute 2:43.43
+Progress: Minute 2:53.54
 
 
 Basics
@@ -102,3 +102,4 @@ Move on to the sign up page setup
 At bottom of app where the tab icons appear there may be a color that doesnt match the rest of the app. To correct this, create a components folder and in it include a SafeScreen.jsx, essentially wrap the slot in layout using SafeScreen in order to dictate header and footer.
 
 Created the mealAPI endpoints under services
+Update index.js to include endpoints from the API
