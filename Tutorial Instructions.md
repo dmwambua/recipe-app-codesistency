@@ -103,3 +103,6 @@ At bottom of app where the tab icons appear there may be a color that doesnt mat
 
 Created the mealAPI endpoints under services
 Update index.js to include endpoints from the API
+
+Develop index.jsx
+create components for reusable features
