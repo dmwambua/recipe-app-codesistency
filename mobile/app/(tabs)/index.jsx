@@ -177,7 +177,7 @@ const HomeScreen = () => {
               renderItem={({ item }) => <RecipeCard recipe={item} />}
               keyExtractor={(item) => item.id.toString()}
               numColumns={2}
-              columnWrapperStyle={homeStyles.recipeGrid}
+              columnWrapperStyle={homeStyles.recipesGrid}
               scrollEnabled={false}
              // ListEmptyComponent={<Text>No recipes found, try a different category.</Text>}
             />

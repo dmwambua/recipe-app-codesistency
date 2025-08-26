@@ -110,11 +110,11 @@ export const homeStyles = StyleSheet.create({
     letterSpacing: -0.5,
   },
   recipesGrid: {
-    gap: 16,
+    gap: 16, // Space between recipe cards
   },
   row: {
     justifyContent: "space-between",
-    gap: 16,
+    gap: 16, // Space between recipe cards
   },
   emptyState: {
     alignItems: "center",
