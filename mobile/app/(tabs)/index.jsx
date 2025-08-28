@@ -8,6 +8,7 @@ import { COLORS } from "../../constants/colors";
 import { Ionicons } from '@expo/vector-icons';
 import CategoryFilter from "../../components/CategoryFilter";
 import RecipeCard from "../../components/RecipeCard";
+import LoadingSpinner from "../../components/LoadingSpinner";
 const HomeScreen = () => {
   const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -40,7 +41,7 @@ const HomeScreen = () => {
       const transformedFeatured = MealAPI.transformMealData(featuredMeal);
       setFeaturedRecipe(transformedFeatured);
     } catch (error) {
-      console.log.error("Error loading data:", error);
+      console.log("Error loading data:", error);
     } finally {
       setLoading(false);
     }
@@ -73,7 +74,7 @@ const HomeScreen = () => {
   useEffect(() => {
     loadData();
   }, []);
-
+  if (loading && !refreshing) return <LoadingSpinner message="Loading recipes..." />;
   return (
     // Main container
     <View style={homeStyles.container}>
@@ -114,7 +115,7 @@ const HomeScreen = () => {
         </View>
         {/* Featured Recipe Section */}
         {featuredRecipe && (
-          <View style={homeStyles.featuredSection}>
+          <View style={homeStyles.featuredCard}>
             <TouchableOpacity
               style={homeStyles.featuredSection}
               activeOpacity={0.9}
