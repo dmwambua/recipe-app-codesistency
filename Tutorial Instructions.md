@@ -6,7 +6,7 @@ free icons used in this tutorial https://www.thiings.co/things
 free icons elsewhere https://www.flaticon.com/free-icons/things 
 Udemy course https://www.udemy.com/course/the-web-dev-bootcamp/?couponCode=DA64BA3F36F6D786D143
 The Meal DB https://www.themealdb.com/api.php 
-Progress: Minute 3:09.46
+Progress: Minute 3:19.46
 
 
 Basics

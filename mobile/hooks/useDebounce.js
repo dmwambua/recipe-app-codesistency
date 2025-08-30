@@ -1,3 +1,4 @@
+//useDebounce allows for a pause for you to type before the search begins, otherwise, searching will start after every letter is typed
 import { useState, useEffect } from "react";
 
 export const useDebounce = (value, delay) => {
