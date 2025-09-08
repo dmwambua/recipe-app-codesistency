@@ -5,9 +5,11 @@ import { useDebounce } from '../../hooks/useDebounce';
 import { searchStyles } from '../../assets/styles/search.styles';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../../constants/colors';
-
+import RecipeCard from '../../components/RecipeCard';
+import { FlatList } from 'react-native-gesture-handler';
+import LoadingSpinner from '../../components/LoadingSpinner';
 const SearchScreen = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
@@ -46,7 +48,7 @@ const SearchScreen = () => {
         setRecipes(results);
       }
       catch (error) {
-        console.log("Error loading initial data:", error);
+        console.error("Error loading initial data:", error);
       } finally {
         setInitialLoading(false);
       }
@@ -61,7 +63,7 @@ const SearchScreen = () => {
         const results = await performSearch(debouncedSearchQuery);
         setRecipes(results);
       } catch (error) {
-        console.log("Error performing search:", error);
+        console.error("Error performing search:", error);
       } finally {
         setLoading(false);
       }
@@ -69,7 +71,7 @@ const SearchScreen = () => {
     handleSearch();
   },
     [debouncedSearchQuery, initialLoading]);
-  if (initialLoading) return <Text>Loading...</Text>;
+  if (initialLoading) return <LoadingSpinner message="Loading recipes..." />;
   return (
     <View style={searchStyles.container}>
       <View style={searchStyles.searchSection}>
@@ -102,21 +104,39 @@ const SearchScreen = () => {
       <View style={searchStyles.resultsSection}>
         <View style={searchStyles.resultsSection}>
           <View style={searchStyles.resultsHeader}>
-            <Text style={searchStyles.resultsTitle}>{searchQuery ? `Results for "${searchQuery}"` : "Popular Recipes"}</Text>
+            <Text style={searchStyles.resultsTitle}>
+              {searchQuery ? `Results for "${searchQuery}"` : "Popular Recipes"}</Text>
             <Text style={searchStyles.resultsCount}>{recipes.length} found.</Text>
           </View>
         </View>
         {loading ? (
-          <View>
-
-          </View style={searchStyles.loadingContainer}>
-        <Text >Loading...</Text>
-        ) : ()}
+          <View style={searchStyles.loadingContainer}>
+            <LoadingSpinner message="Loading recipes..." />
+          </View>
+        ) : (
+          <FlatList
+            data={recipes}
+            renderItem={({ item }) => <RecipeCard recipe={item} />}
+            keyExtractor={(item) => item.id.toString()}
+            numColumns={2}
+            columnWrapperStyle={searchStyles.row}
+            contentContainerStyle={searchStyles.recipesGrid}
+            showsVerticalScrollIndicator={false}
+            ListEmptyComponent={<NoResultsFound />}
+          />
+        )}
       </View>
-
     </View>
-
-  )
-}
-
+  );
+};
 export default SearchScreen;
+
+function NoResultsFound() {
+  return (
+    <View style={searchStyles.emptyState}>
+      <Ionicons name="search-outline" size={64} color={COLORS.textLight} />
+      <Text style={searchStyles.emptyTitle}>No recipes found.</Text>
+      <Text style={searchStyles.emptyDescription}>Try different keywords or check your spelling.</Text>
+    </View>
+  );
+}
